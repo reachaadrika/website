@@ -1,0 +1,32 @@
+name: End-to-end tests
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          # Disabling shallow clone is recommended for improving relevancy of reporting
+          fetch-depth: 0
+
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+
+      - name: Use NPM version 8.5.5
+        run: npm install -g npm@8.5.5
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Cypress Tests are running
+        run: npx cypress run --component # Replace with the actual command to run Cypress tests
