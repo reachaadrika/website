@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'cypress/react';
 import Calendar from '../../components/Calendar';
-import eventsData from '../../config/meetings.json';
+import eventsData from 'config/meetings.json';
 
 describe('Calendar component', () => {
   beforeEach(() => {
