@@ -29,6 +29,5 @@ jobs:
         run: npm install
 
       - name: Cypress Tests are running
-        uses: actions/checkout@v3
         uses: cypress-io/github-action@v5
         run: npx cypress run --component # Replace with the actual command to run Cypress tests
