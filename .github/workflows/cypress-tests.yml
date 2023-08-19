@@ -1,4 +1,5 @@
 name: End-to-end tests
+
 on:
   push:
     branches:
@@ -30,6 +31,5 @@ jobs:
 
       - name: Cypress Tests are running
         uses: cypress-io/github-action@v5
-         with:
+        with:
           component: true
-     
