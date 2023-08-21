@@ -1,22 +1,17 @@
 name: End-to-end tests
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    types: [opened, reopened, synchronize, ready_for_review]
+
+on: push
 
 jobs:
   cypress-run:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-     
 
       - name: Use Node.js 16.x
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
           node-version: 16.x
 
@@ -26,5 +21,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Cypress Tests are running
-        run : node  ./scripts/index.js && npm run test
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          component: true
